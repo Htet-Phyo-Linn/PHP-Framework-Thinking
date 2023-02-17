@@ -1,4 +1,8 @@
 <?php
+
+    namespace controllers;
+    use core\App;
+
     class PagesController{
         public function home(){
             $tasks = App::get("database")->selectAll("tasks");
@@ -8,7 +12,12 @@
         }
 
         public function about(){
-            view("About");
+            // view("About");
+
+            $tasks = App::get("database")->selectAll("tasks");
+            view('About', [
+                "tasks"=>$tasks
+            ]);
         }
 
         public function contact(){
@@ -20,7 +29,7 @@
                 'name'=>request('name')
             ], "users");
             
-            redirect("");
+            redirect("/");
         }
     }
 ?>
