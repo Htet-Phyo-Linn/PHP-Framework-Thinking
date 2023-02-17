@@ -24,22 +24,14 @@
         }
 
         public function direct($uri, $method) {
-            
-            // dd();
-
             if(array_key_exists($uri, $this->routes[$method])) {
-
-                $explosion=explode("@", $this->routes[$method][$uri]);          
-                // return dd($this->routes[$method][$uri]);
-                // dd($explosion);
-                $this->callAction($explosion[0], $explosion[1]);
-
+                $explosion = $this->routes[$method][$uri];          
+                $this->callAction($explosion[0], $explosion[1]); 
             } else {
                 die("404 not found.");
-            }
-            
+            }        
         }
-
+        
         public function callAction($class, $method) {
             // dd($method);
             $class = new $class;

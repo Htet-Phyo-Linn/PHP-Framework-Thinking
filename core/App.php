@@ -1,17 +1,18 @@
 <?php
+    namespace core;
+    
+    class App {
 
-class App {
+        protected static $data=[
 
-    protected static $data=[
+        ];
 
-    ];
+        public static function bind($key, $value) {
+            static::$data[$key]=$value;
+        }
 
-    public static function bind($key, $value) {
-        static::$data[$key]=$value;
-    }
-
-    public static function get($key) {
-        return static::$data[$key];
-    }
+        public static function get($key) {
+            return static::$data[$key];
+        }
     
 }
